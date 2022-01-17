@@ -1,21 +1,30 @@
 #title {
+    background: rgb(58, 150, 221);
+    color: rgb(248, 249, 250);
+    margin: 0em;
+    padding: 1em;
     size: 2em;
 }
 
 .content {
-    text-align: center;
+    margin: 0em;
+    text-align: right;
+    background-color: rgb(248, 249, 250);
+    color: rgb(40, 80, 167);
 }
 .unit {
     size: 2em;
 }
 
 #value {
-    font-size: 10em;
+    font-size: 12em;
+    text-align: left;
 }
 
 #quantity {
-    font-size: 6em;
+    font-size: 9em;
 }
+
 #button_zero {
     size: 4em;
 }

@@ -13,26 +13,23 @@ var offset = 0.0
 
 $(document).ready(function () {
 
+    $("#title").html(balance.name)
     connect()
 
         
     $('#button_zero').on('click', function () {
         offset = value
-        $("#value").html("000.0")
-
-        
+        $("#value").html("000.0")  
     });
 
-
     setInterval(update, 1000);
-
 });
 
 var read_value = function() {
     var start = 0x2,
     count = 2;
     console.log("interval")
-client.readHoldingRegisters(start, count).then(function (data, request) {
+    client.readHoldingRegisters(start, count).then(function (data, request) {
     value = convertToFloat(data)
     $("#value").html((value - offset).toFixed(1))
 
@@ -41,17 +38,20 @@ client.readHoldingRegisters(start, count).then(function (data, request) {
     $("#status").html(err)
 
 });
-}
+}   
 
 var update = function() {
     read_value()
     var p_unit = $("#p_unit").val()
 
     if (p_unit > 0) {
-        var quantity = Math.round((value * 1000 / p_unit))
+        var quantity = Math.round(((value - offset) * 1000 / p_unit))
+        //console.log("v:", value, " o:", offset, " pu:", p_unit, " q:", quantity)
         $("#quantity").html(quantity)
+        $("#pieces").html("pieces")
     } else {
-        $("#quantity").html("_")
+        $("#quantity").html("")
+        $("#pieces").html("")
     }
 }
 
