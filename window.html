@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
+    <meta charset="UTF-8">
     <title>Balances</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
@@ -14,16 +15,20 @@
             
 
           <span id="value">000.0</span><span class="unit">kg</span><br>
-          <button id="button_zero">zero</button>
+          <button id="button_zero">> O <</button><span> </span>
+          <button id="button_tare">> T <</button>
+          <label for="tare">poids du panier:</label>
+          <input type="number" name="tare" id="tare">
+          <span class="unit"> kg</span>
           <br><br>
 
-          <span>poids unitaire :</span>
+          <label for="p_unit">poids unitaire:</label>
           <input type="number" name="p_unit" id="p_unit">
-          <span class="unit"> g</span><br>
+          <span class="unit"> kg</span><br>
 
 
           <span id="quantity">000</span>
-          <span id="pieces">pieces</span><br>
+          <span id="pieces">pièces</span><br>
 
           <h3 id="status">ok</h3>
 

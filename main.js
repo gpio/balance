@@ -8,7 +8,7 @@ const balance = {
 var client = new ModbusClient()
 var value = 0.0
 var offset = 0.0
-
+var tare = 0.0
 
 
 $(document).ready(function () {
@@ -21,6 +21,13 @@ $(document).ready(function () {
         offset = value
         $("#value").html("000.0")  
     });
+    $('#button_tare').on('click', function () {
+        tare = value - offset
+        $("#tare").val(tare.toFixed(3))
+    });
+    $('#tare').on('change', function () {
+        tare = $("#tare").val()
+    });
 
     setInterval(update, 1000);
 });
@@ -31,7 +38,7 @@ var read_value = function() {
     console.log("interval")
     client.readHoldingRegisters(start, count).then(function (data, request) {
     value = convertToFloat(data)
-    $("#value").html((value - offset).toFixed(1))
+    $("#value").html((value - offset - tare).toFixed(1))
 
 }).fail(function (err) {
 
@@ -45,7 +52,7 @@ var update = function() {
     var p_unit = $("#p_unit").val()
 
     if (p_unit > 0) {
-        var quantity = Math.round(((value - offset) * 1000 / p_unit))
+        var quantity = Math.round((value - offset - tare) / p_unit)
         //console.log("v:", value, " o:", offset, " pu:", p_unit, " q:", quantity)
         $("#quantity").html(quantity)
         $("#pieces").html("pieces")

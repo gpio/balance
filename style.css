@@ -17,12 +17,12 @@
 }
 
 #value {
-    font-size: 12em;
+    font-size: 15em;
     text-align: left;
 }
 
 #quantity {
-    font-size: 9em;
+    font-size: 11em;
 }
 
 #button_zero {
@@ -30,5 +30,8 @@
 }
 
 #p_unit {
-    width: 4em;
+    width: 8em;
+}
+#tare {
+    width: 8em;
 }
