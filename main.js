@@ -18,32 +18,42 @@ $(document).ready(function () {
         
     $('#button_zero').on('click', function () {
         offset = value
-        $("#value").html(0.000)
+        $("#value").html("000.0")
 
         
     });
 
 
-    setInterval(readValue, 1000);
+    setInterval(update, 1000);
 
 });
 
-var readValue = function() {
+var read_value = function() {
     var start = 0x2,
     count = 2;
     console.log("interval")
 client.readHoldingRegisters(start, count).then(function (data, request) {
     value = convertToFloat(data)
-    $("#value").html((value - offset).toFixed(3))
+    $("#value").html((value - offset).toFixed(1))
 
 }).fail(function (err) {
 
     $("#status").html(err)
 
 });
-
 }
 
+var update = function() {
+    read_value()
+    var p_unit = $("#p_unit").val()
+
+    if (p_unit > 0) {
+        var quantity = Math.round((value * 1000 / p_unit))
+        $("#quantity").html(quantity)
+    } else {
+        $("#quantity").html("_")
+    }
+}
 
 
 

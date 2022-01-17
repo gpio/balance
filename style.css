@@ -1,0 +1,25 @@
+#title {
+    size: 2em;
+}
+
+.content {
+    text-align: center;
+}
+.unit {
+    size: 2em;
+}
+
+#value {
+    font-size: 10em;
+}
+
+#quantity {
+    font-size: 6em;
+}
+#button_zero {
+    size: 4em;
+}
+
+#p_unit {
+    width: 4em;
+}
